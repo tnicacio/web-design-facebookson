@@ -1,0 +1,157 @@
+.contentContainer {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+.contentLeft,
+.contentRight,
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentLeft {
+  padding: 0 2rem 0 12rem;
+  align-items: flex-start;
+}
+
+.contentLeft h1 {
+  /* font-family: 'facebook letter faces'; */
+  font-size: 60px;
+  /* color:  #1877f2; */
+  color: var(--blue-dark);
+  white-space: nowrap;
+}
+
+.contentLeft p {
+  font-size: 30px;
+  /* min-height: 200px; */
+  max-width: 750px;
+  /* font-family: 'Roboto Condensed'; */
+}
+
+.contentRight {
+  padding: 0 12rem 0 2rem;
+}
+
+.formLogin {
+  display: flex;
+  background: white;
+  border-radius: 10px;
+  width: 400px;
+  padding: 1.25rem;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.formLogin input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  outline: none;
+  font-size: 16px;
+}
+
+.loginBtn {
+  background: var(--blue-dark);
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-family: 'Arial';
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.loginBtn:hover {
+  background: var(--blue);
+}
+
+.forgottenPass {
+  margin: 15px 0;
+  text-decoration: none;
+  color: var(--blue-dark);
+  font-weight: 300;
+  font-family: 'Arial';
+  font-size: 14px;
+}
+
+.forgottenPass:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.signUp {
+  padding-top: 20px;
+  border-top: 1px solid #999;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.signUpBtn {
+  background: var(--dark-green);
+  /* background: var(--green); */
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Arial';
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.signUpBtn:hover {
+  background: var(--green);
+}
+
+.contentRight p {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 950px) {
+  .contentContainer {
+    flex-direction: column;
+  }
+
+  .contentLeft {
+    align-content: center;
+    align-items: center;
+    padding: 0;
+    margin-top: 10rem;
+  }
+
+  .contentLeft p {
+    padding: 0 4rem 0 4rem;
+    text-align: center;
+  }
+
+  .contentRight {
+    padding: 0;
+  }
+
+  .contentRight p {
+    margin: 0 2rem 0 2rem;
+    text-align: center;
+  }
+
+  .contentLeft p {
+    min-height: 75px;
+  }
+}
