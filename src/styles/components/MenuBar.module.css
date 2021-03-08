@@ -1,0 +1,27 @@
+.container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  align-items: center;
+  /* border: 1px solid red; */
+  min-height: 100vh;
+  min-width: 6rem;
+  background: var(--blue-dark);
+  list-style-type: none;
+  padding: 50%;
+}
+
+.container li:first-child {
+  margin-bottom: auto;
+}
+
+.container li:last-of-type {
+  margin-top: auto;
+}
+
+.darkModeBtn,
+.logOutIcon {
+  cursor: pointer;
+}

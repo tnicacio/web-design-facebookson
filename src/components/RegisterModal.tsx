@@ -11,8 +11,8 @@ interface ICadastro {
   password: string;
 }
 
-export function RegisterModal(props) {
-  const { closeRegisterModal } = useContext(SignInSignUpContext);
+export function RegisterModal(props: any) {
+  const { closeRegisterModal, logIn } = useContext(SignInSignUpContext);
   const [formValues, setFormValues] = useState<ICadastro>({
     name: '',
     email: '',
@@ -28,6 +28,13 @@ export function RegisterModal(props) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+
+    //Validação do login
+    const validData = true;
+    if (validData) {
+      //Salva as infos na session
+      logIn();
+    }
     console.log('handleSubmit', data);
   };
 
@@ -35,7 +42,7 @@ export function RegisterModal(props) {
   let { overlayProps } = useOverlay(props, ref);
   let { dialogProps } = useDialog(props, ref);
 
-  console.log('***formValues', formValues);
+  // console.log('***formValues', formValues);
   return (
     <FocusScope contain autoFocus>
       <div className={styles.overlay}>
