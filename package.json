@@ -11,10 +11,11 @@
     "@types/js-cookie": "^2.2.6",
     "@vercel/node": "^1.9.0",
     "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "js-cookie": "^2.2.1",
     "next": "10.0.7",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react-dom": "^17.0.1",
     "react-icons": "^4.2.0"
   },
   "devDependencies": {

@@ -21,3 +21,20 @@
   gap: 6.25rem;
   align-content: center;
 }
+
+@media screen and (max-width: 950px) {
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contentContainer section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contentContainer section div {
+    padding: 0;
+  }
+}

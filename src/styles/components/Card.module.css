@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  border: 1px solid red;
+  background: var(--background);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 1rem;
+  /* border: 1px solid blue; */
+  padding: 50px;
+
+  background: var(--white);
+  border-radius: 2rem;
+}
+
+.box h1 {
+  font-size: 200%;
+  margin-bottom: 1rem;
+}
+
+.box main {
+  font-size: 120%;
+}

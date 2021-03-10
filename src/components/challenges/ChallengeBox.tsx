@@ -1,8 +1,7 @@
-import styles from '../styles/components/ChallengeBox.module.css';
-import { syncBuiltinESMExports } from 'module';
-import { ChallengesContext } from '../contexts/ChallengesContext';
+import styles from '../../styles/components/ChallengeBox.module.css';
+import { ChallengesContext } from '../../contexts/ChallengesContext';
 import { useContext } from 'react';
-import { CountdownContext } from '../contexts/CountdownContext';
+import { CountdownContext } from '../../contexts/CountdownContext';
 
 export function ChallengeBox() {
   const { activeChallenge, resetChallenge, completeChallenge } = useContext(

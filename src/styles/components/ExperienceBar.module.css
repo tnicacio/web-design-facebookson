@@ -9,7 +9,7 @@
 
 .experienceBar > div {
   flex: 1;
-  height: 4px;
+  min-height: 4px;
   border-radius: 4px;
   background: var(--gray-line);
   margin: 0 1.5rem;
@@ -17,7 +17,7 @@
 }
 
 .experienceBar > div > div {
-  height: 4px;
+  min-height: 4px;
   border-radius: 4px;
   background: var(--green);
 }
@@ -26,4 +26,16 @@ span.currentExperience {
   position: absolute;
   top: 12px;
   transform: translateX(-50%); /*posicionar no centro*/
+}
+
+@media screen and (max-width: 950px) {
+  .experienceBar span {
+    font-size: 87.5%;
+  }
+
+  .experienceBar {
+    height: 100%;
+    width: 100%;
+    margin-top: 6rem; /*teste*/
+  }
 }

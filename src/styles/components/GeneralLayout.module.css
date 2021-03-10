@@ -2,9 +2,9 @@
   display: flex;
   min-height: 100vh;
   align-items: flex-start;
+  justify-content: center;
   padding: 0;
   margin: 0;
-
   background: var(--background);
 }
 
@@ -12,16 +12,14 @@
   display: flex;
   flex-direction: row;
   flex: 1;
-  border: 1px solid red;
   margin-left: 6rem;
-  /* justify-content: center; */
-  /* justify-items: center; */
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   min-height: 100vh;
   margin: auto;
   border: 1px solid green;
@@ -29,13 +27,15 @@
   text-align: justify;
 }
 
-.aboutTitle {
+.pageTitle {
   display: flex;
   padding: 2.25rem 0 0 100px;
   flex-direction: column;
-  /* border: 1px solid blue; */
+  margin: 0 0 0 0;
+  align-self: flex-start;
+  border: 1px solid blue;
 }
 
-.aboutTitle h1 {
+.pageTitle h1 {
   font-size: 300%;
 }

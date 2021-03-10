@@ -1,9 +1,9 @@
-import styles from '../styles/components/RegisterModal.module.css';
+import styles from '../../styles/components/RegisterModal.module.css';
 import { useState, useRef, useContext } from 'react';
 import { FocusScope } from '@react-aria/focus';
 import { useOverlay } from '@react-aria/overlays';
 import { useDialog } from '@react-aria/dialog';
-import { SignInSignUpContext } from '../contexts/SignInSignUpContext';
+import { SignInSignUpContext } from '../../contexts/SignInSignUpContext';
 
 interface ICadastro {
   name: string;
@@ -12,7 +12,7 @@ interface ICadastro {
 }
 
 export function RegisterModal(props: any) {
-  const { closeRegisterModal, logIn } = useContext(SignInSignUpContext);
+  const { closeRegisterModal, signIn } = useContext(SignInSignUpContext);
   const [formValues, setFormValues] = useState<ICadastro>({
     name: '',
     email: '',
@@ -33,7 +33,7 @@ export function RegisterModal(props: any) {
     const validData = true;
     if (validData) {
       //Salva as infos na session
-      logIn();
+      signIn();
     }
     console.log('handleSubmit', data);
   };

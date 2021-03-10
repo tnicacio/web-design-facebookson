@@ -1,15 +1,18 @@
 import { createContext, ReactNode, useState } from 'react';
 import Cookies from 'js-cookie';
-import { Login } from '../pages/login';
-import { Challenges } from '../pages/challenges';
+import Login from '../pages/login';
+import Challenges from '../pages/challenges';
+
+import { useRouter } from 'next/router';
 
 interface SignInSignUpContextData {
   openRegisterModal: () => void;
   closeRegisterModal: () => void;
   isRegisterModalOpen: boolean;
   isLoggedIn: boolean;
-  logIn: () => void;
+  signIn: () => void;
   logOut: () => void;
+  setIsLoggedIn: (boolean) => void;
 }
 
 interface SignInSignUpProviderProps {
@@ -34,16 +37,17 @@ export function SignInSignUpProvider({
   }
 
   function openRegisterModal() {
-    console.log('openRegisterModal');
+    // console.log('openRegisterModal');
     setIsRegisterModalOpen(true);
   }
 
-  const logIn = () => {
+  function signIn() {
     setIsLoggedIn(true);
     Cookies.set('isLoggedIn', String(true));
-  };
+  }
+  const router = useRouter();
 
-  const logOut = async () => {
+  function logOut() {
     setIsLoggedIn(false);
     const cookies = [
       'isLoggedIn',
@@ -52,7 +56,10 @@ export function SignInSignUpProvider({
       'challengesCompleted',
     ];
     cookies.forEach((cookie) => Cookies.remove(cookie));
-  };
+
+    console.log('chegou ' + isLoggedIn);
+    // router.push('/');
+  }
 
   return (
     <SignInSignUpContext.Provider
@@ -61,8 +68,9 @@ export function SignInSignUpProvider({
         isLoggedIn,
         openRegisterModal,
         closeRegisterModal,
-        logIn,
+        signIn,
         logOut,
+        setIsLoggedIn,
       }}
     >
       {isLoggedIn ? (

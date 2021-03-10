@@ -28,7 +28,7 @@
 .contentLeft h1 {
   /* font-family: 'facebook letter faces'; */
   font-size: 60px;
-  /* color:  #1877f2; */
+  /* color: #1877f2; */
   color: var(--blue-dark);
   white-space: nowrap;
 }
@@ -46,7 +46,7 @@
 
 .signInSignUpContainer {
   display: flex;
-  background: white;
+  /* background: white; */
   border-radius: 10px;
   width: 400px;
   margin-bottom: 25px;
@@ -135,6 +135,7 @@
 @media screen and (max-width: 950px) {
   .contentContainer {
     flex-direction: column;
+    justify-content: center;
   }
 
   .contentLeft {

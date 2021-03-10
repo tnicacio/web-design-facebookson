@@ -2,15 +2,17 @@ import Head from 'next/head';
 import styles from '../../styles/pages/Login.module.css';
 import { useContext, useState } from 'react';
 import { SignInSignUpContext } from '../../contexts/SignInSignUpContext';
-import { RegisterModal } from '../../components/RegisterModal';
+import { RegisterModal } from '../../components/login/RegisterModal';
+
+import axios from 'axios';
 
 interface ILogin {
   email: string;
   password: string;
 }
 
-export function Login() {
-  const { isRegisterModalOpen, openRegisterModal, logIn } = useContext(
+function Login() {
+  const { isRegisterModalOpen, openRegisterModal, signIn } = useContext(
     SignInSignUpContext
   );
   const [formValues, setFormValues] = useState<ILogin>({
@@ -23,21 +25,36 @@ export function Login() {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  async function validaLogin(formData) {
+    try {
+      const { email, password } = formData;
+      const users = (await axios.get('http://localhost:3000/api/users'))?.data;
+      for (let user of users) {
+        if (user.email === email && user.password === password) {
+          //set user on session
+          return true;
+        }
+      }
+      return false;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-
-    //Validação do login
-    const validData = true;
-    if (validData) {
-      //Salva as infos na session
-      logIn();
+    const loginValid = await validaLogin(data);
+    console.log(loginValid);
+    if (loginValid) {
+      signIn();
+    } else {
+      alert('Email ou senha incorretos!');
     }
     console.log('handleSubmit', data);
   };
 
-  console.log(openRegisterModal);
   return (
     <>
       <div className={styles.container}>
@@ -100,3 +117,5 @@ export function Login() {
     </>
   );
 }
+
+export default Login;

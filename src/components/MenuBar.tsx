@@ -8,12 +8,32 @@ import { useContext } from 'react';
 import Link from 'next/link';
 
 import { SignInSignUpContext } from '../contexts/SignInSignUpContext';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 export function MenuBar() {
+  const router = useRouter();
   const { logOut } = useContext(SignInSignUpContext);
 
   function handleDarkMode(e) {
-    console.log(e);
+    // console.log(e);
+  }
+
+  function handleLogOut(e) {
+    e.preventDefault;
+
+    logOut?.();
+
+    //Update level, currentExperience and challengesComplete from User
+
+    const cookies = [
+      'isLoggedIn',
+      'level',
+      'currentExperience',
+      'challengesCompleted',
+    ];
+    cookies.forEach((cookie) => Cookies.remove(cookie));
+    router.push('/');
   }
 
   return (
@@ -21,34 +41,44 @@ export function MenuBar() {
       <nav>
         <ul className={styles.container}>
           <li className={styles.item}>
-            <a className={styles.logOutIcon} onClick={logOut}>
+            <a
+              aria-label="Log Out"
+              className={styles.logOutIcon}
+              onClick={handleLogOut}
+            >
               <GiPowerButton />
             </a>
           </li>
 
           <li className={styles.item}>
             <Link href="/">
-              <a>
+              <a aria-label="Challenges">
                 <AiOutlineHome />
               </a>
             </Link>
           </li>
           <li className={styles.item}>
-            <Link href="/leaderboard">
-              <a>
+            <Link href="leaderboard">
+              <a aria-label="Leaderboard">
                 <GiRank3 />
               </a>
             </Link>
           </li>
           <li className={styles.item}>
-            <a className={styles.darkModeBtn} onClick={handleDarkMode}>
+            <a
+              aria-label="Switch Light-Dark mode"
+              className={styles.darkModeBtn}
+              onClick={handleDarkMode}
+            >
               <CgDarkMode />
             </a>
           </li>
-          <li className={`${styles.item} ${styles.about}`}>
-            <a href="/about">
-              <AiOutlineInfoCircle />
-            </a>
+          <li className={styles.item}>
+            <Link href="about">
+              <a aria-label="About">
+                <AiOutlineInfoCircle />
+              </a>
+            </Link>
           </li>
         </ul>
       </nav>

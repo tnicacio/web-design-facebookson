@@ -3,12 +3,12 @@ import styles from '../../styles/pages/Challenges.module.css';
 
 import { CountdownProvider } from '../../contexts/CountdownContext';
 
-import { Profile } from '../../components/Profile';
-import { CompletedChallenges } from '../../components/CompletedChallenges';
-import { Countdown } from '../../components/Countdown';
-import { ChallengeBox } from '../../components/ChallengeBox';
+import { Profile } from '../../components/challenges/Profile';
+import { CompletedChallenges } from '../../components/challenges/CompletedChallenges';
+import { Countdown } from '../../components/challenges/Countdown';
+import { ChallengeBox } from '../../components/challenges/ChallengeBox';
 import { MenuBar } from '../../components/MenuBar';
-import { ExperienceBar } from '../../components/ExperienceBar';
+import { ExperienceBar } from '../../components/challenges/ExperienceBar';
 import { ChallengesProvider } from '../../contexts/ChallengesContext';
 
 interface ChallengeProps {
@@ -17,7 +17,7 @@ interface ChallengeProps {
   challengesCompleted: number;
 }
 
-export function Challenges(props: ChallengeProps) {
+export default function Challenges(props: ChallengeProps) {
   return (
     <ChallengesProvider
       level={props.level || 0}

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Admin",
+    "email": "admin@email.com",
+    "password": "admin",
+    "level": 2,
+    "currentExperience": 6,
+    "challengesCompleted": 1
+  },
+  {
+    "name": "João da Silva",
+    "email": "joao@email.com",
+    "password": "joao123",
+    "level": 2,
+    "currentExperience": 70,
+    "challengesCompleted": 2
+  },
+  {
+    "name": "Mariazinha",
+    "email": "maria@email.com",
+    "password": "maria123",
+    "level": 2,
+    "currentExperience": 130,
+    "challengesCompleted": 3
+  },
+  {
+    "name": "Duda Lina",
+    "email": "duda@email.com",
+    "password": "duda123",
+    "level": 3,
+    "currentExperience": 126,
+    "challengesCompleted": 4
+  },
+  {
+    "name": "Tiago",
+    "email": "tiago@email.com",
+    "password": "123456",
+    "level": 3,
+    "currentExperience": 112,
+    "challengesCompleted": 4
+  }
+]

@@ -1,9 +1,9 @@
-import styles from '../styles/components/LevelUpModal.module.css';
+import styles from '../../styles/components/LevelUpModal.module.css';
 
 import { FocusScope } from '@react-aria/focus';
 
 import { useContext } from 'react';
-import { ChallengesContext } from '../contexts/ChallengesContext';
+import { ChallengesContext } from '../../contexts/ChallengesContext';
 
 export function LevelUpModal() {
   const { level, closeLevelUpModal } = useContext(ChallengesContext);

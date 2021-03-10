@@ -20,7 +20,7 @@ export default function Home(props: HomeProps) {
   return (
     <SignInSignUpProvider
       isLoggedIn={props.isLoggedIn ?? false}
-      level={props.level ?? 0}
+      level={props.level ?? 1}
       currentExperience={props.currentExperience ?? 0}
       challengesCompleted={props.challengesCompleted ?? 0}
     />
