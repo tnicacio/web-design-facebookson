@@ -1,4 +1,59 @@
-.outterContainer {
+.containerExterno {
   display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+
+  margin-left: 6rem;
+  min-width: calc(100% - 12rem);
+  padding: 3rem 0 3rem 0;
+}
+
+.leaderboardHeader {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 87.5%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  min-width: 100%;
+  gap: 5rem;
+  border: 1px solid blue;
+}
+
+.userInfoTitle,
+.challengeInfoTitle {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  border: 1px solid orange;
+  padding: 5px;
+}
+
+.positionTitle {
+  display: flex;
+  align-items: center;
   flex-direction: row;
+  justify-content: center;
+
+  border: 1px solid green;
+  min-width: 4rem;
+}
+
+.userTitle,
+.challengesTitle,
+.experienceTitle {
+  display: flex;
+  justify-content: center;
+  border: 1px solid green;
+  min-width: 10rem;
+  padding: 0 10px 0 10px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  gap: 1rem;
 }
