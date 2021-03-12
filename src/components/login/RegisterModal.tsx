@@ -39,6 +39,7 @@ export function RegisterModal(props: any) {
 
     if (validData) {
       //Salva as infos na session
+      closeRegisterModal();
       signIn();
     }
     console.log('handleSubmit', data);

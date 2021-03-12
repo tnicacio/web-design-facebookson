@@ -22,7 +22,7 @@ export function LeaderboardRow({ position, user }: ILeaderboardRow) {
     profileContainerImg: { height: '3rem', width: '3rem' },
     profileContainerDiv: null,
     profileContainerDivStrong: { fontSize: '1.1rem' },
-    profileContainerDivP: null,
+    profileContainerDivP: { fontSize: '0.80rem' },
     profileContainerDivPImg: null,
   };
 

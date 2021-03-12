@@ -8,7 +8,7 @@
 }
 
 .leaderboardHeader {
-  color: var(--text);
+  color: var(--title);
   font-weight: 600;
   font-size: 87.5%;
 

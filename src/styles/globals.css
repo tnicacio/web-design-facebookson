@@ -24,6 +24,11 @@
   --lightRed: #ff5555;
   --orange: orangered;
   --red-orange: #eb773e;
+  --title: black;
+  --border: #f0f1f3;
+  --init-cicle-btn: #5965e0;
+  --init-cicle-btn-hover: #4953b8;
+  --numbers: '#5965e0';
 }
 
 @media (max-width: 1080px) {

@@ -29,7 +29,7 @@
   /* font-family: 'facebook letter faces'; */
   font-size: 60px;
   /* color: #1877f2; */
-  color: var(--blue-dark);
+  color: var(--blue);
   white-space: nowrap;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .loginBtn {
-  background: var(--blue-dark);
+  background: var(--blue);
   padding: 15px;
   text-align: center;
   text-decoration: none;
@@ -84,20 +84,20 @@
 }
 
 .loginBtn:hover {
-  background: var(--blue);
+  background: var(--blue-dark);
 }
 
 .forgottenPass {
   margin: 15px 0;
   text-decoration: none;
-  color: var(--blue-dark);
+  color: var(--blue);
   font-weight: 300;
   font-family: 'Arial';
   font-size: 14px;
 }
 
 .forgottenPass:hover {
-  color: var(--blue);
+  color: var(--blue-dark);
   text-decoration: underline;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .signUpBtn {
-  background: var(--dark-green);
+  background: var(--green);
   /* background: var(--green); */
   padding: 15px;
   text-align: center;
@@ -124,12 +124,14 @@
 }
 
 .signUpBtn:hover {
-  background: var(--green);
+  background: var(--dark-green);
 }
 
 .contentRight p {
   font-size: 15px;
   font-weight: 400;
+
+  max-width: 400px;
 }
 
 @media screen and (max-width: 950px) {

@@ -75,7 +75,7 @@ export function SignInSignUpProvider({
         setIsLoggedIn,
       }}
     >
-      <DarkModeProvider>
+      <DarkModeProvider userLoggedIn={isLoggedIn}>
         {isLoggedIn || rest.isAboutPage ? <>{children}</> : <Login />}
       </DarkModeProvider>
     </SignInSignUpContext.Provider>

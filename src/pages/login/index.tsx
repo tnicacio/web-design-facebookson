@@ -5,6 +5,7 @@ import { SignInSignUpContext } from '../../contexts/SignInSignUpContext';
 import { RegisterModal } from '../../components/login/RegisterModal';
 
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 interface ILogin {
   email: string;
@@ -41,9 +42,9 @@ function Login() {
     }
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
     const loginValid = await validaLogin(data);
     console.log(loginValid);
@@ -53,6 +54,18 @@ function Login() {
       alert('Email ou senha incorretos!');
     }
     console.log('handleSubmit', data);
+  };
+
+  const handleForgottenPass = (event: React.MouseEvent) => {
+    event.preventDefault();
+    alert("Not implemented yet, sorry. You'll have to remeber");
+  };
+
+  const handleKeyUpForgottenPass = (event: React.KeyboardEvent) => {
+    if (event.keyCode === 13) {
+      //Enter
+      document.getElementById('forgotten-pass')?.click();
+    }
   };
 
   return (
@@ -92,7 +105,14 @@ function Login() {
                   Entrar
                 </button>
               </form>
-              <a href="#" className={styles.forgottenPass} accessKey="p">
+              <a
+                id="forgotten-pass"
+                href="#"
+                className={styles.forgottenPass}
+                accessKey="p"
+                onClick={handleForgottenPass}
+                onKeyUp={handleKeyUpForgottenPass}
+              >
                 Esqueceu a senha?
               </a>
               <div className={styles.signUp}>
@@ -119,3 +139,13 @@ function Login() {
 }
 
 export default Login;
+
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   if (ctx.res) {
+//     ctx.res.writeHead(302, { Location: '/' });
+//     ctx.res.end();
+//   }
+//   return {
+//     props: {},
+//   };
+// };

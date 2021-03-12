@@ -9,8 +9,8 @@ export function LevelUpModal() {
   const { level, closeLevelUpModal } = useContext(ChallengesContext);
 
   return (
-    <FocusScope contain autoFocus>
-      <div className={styles.overlay}>
+    <div className={styles.overlay}>
+      <FocusScope contain autoFocus>
         <div className={styles.container}>
           <header>{level}</header>
 
@@ -21,7 +21,7 @@ export function LevelUpModal() {
             <img src="icons/close.svg" alt="Fechar modal" />
           </button>
         </div>
-      </div>
-    </FocusScope>
+      </FocusScope>
+    </div>
   );
 }

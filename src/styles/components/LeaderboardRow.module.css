@@ -10,11 +10,11 @@
   background: var(--white);
 
   font-weight: 600;
-  color: var(--text);
+  color: var(--title);
 }
 
 .container span {
-  color: var(--blue-dark);
+  color: var(--numbers);
 }
 
 .userInfo,
@@ -35,6 +35,7 @@
   min-height: 4rem;
 
   font-size: 125%;
+  color: var(--numbers);
 }
 
 .profile,

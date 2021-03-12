@@ -13,6 +13,7 @@
   flex-direction: row;
   flex: 1;
   margin-left: 6rem;
+  color: var(--title);
 }
 
 .content {

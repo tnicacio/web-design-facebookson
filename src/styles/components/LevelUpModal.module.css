@@ -24,19 +24,19 @@
 .container header {
   font-size: 8.75rem;
   font-weight: 600;
-  color: var(--blue);
+  color: var(--numbers);
   background: url('/icons/levelup.svg') no-repeat center;
   background-size: contain;
 }
 
 .container strong {
   font-size: 2.25rem;
-  color: var(--text);
+  color: var(--title);
 }
 
 .container p {
   font-size: 2.25rem;
-  color: var(--text);
+  color: var(--title);
   margin-top: 0.25rem;
 }
 
@@ -46,6 +46,8 @@
   top: 0.5rem;
   background: transparent;
   border: 0;
+
+  color: var(--red);
 
   font-size: 0; /* para diminuir e adequar o outline do botão que só tem um ícone dentro dele */
 }
