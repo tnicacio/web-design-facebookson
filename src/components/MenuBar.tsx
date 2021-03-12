@@ -10,13 +10,15 @@ import Link from 'next/link';
 import { SignInSignUpContext } from '../contexts/SignInSignUpContext';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+import { DarkModeContext } from '../contexts/DarkModeContext';
 
 export function MenuBar() {
   const router = useRouter();
   const { logOut } = useContext(SignInSignUpContext);
+  const { toggleDarkMode } = useContext(DarkModeContext);
 
-  function handleDarkMode(e) {
-    // console.log(e);
+  function handleDarkMode() {
+    toggleDarkMode();
   }
 
   function handleLogOut(e) {
@@ -45,6 +47,7 @@ export function MenuBar() {
               aria-label="Log Out"
               className={styles.logOutIcon}
               onClick={handleLogOut}
+              tabIndex={1}
             >
               <GiPowerButton />
             </a>
@@ -52,14 +55,14 @@ export function MenuBar() {
 
           <li className={styles.item}>
             <Link href="/">
-              <a aria-label="Challenges">
+              <a aria-label="Challenges" tabIndex={2}>
                 <AiOutlineHome />
               </a>
             </Link>
           </li>
           <li className={styles.item}>
             <Link href="leaderboard">
-              <a aria-label="Leaderboard">
+              <a aria-label="Leaderboard" tabIndex={3}>
                 <GiRank3 />
               </a>
             </Link>
@@ -69,13 +72,14 @@ export function MenuBar() {
               aria-label="Switch Light-Dark mode"
               className={styles.darkModeBtn}
               onClick={handleDarkMode}
+              tabIndex={4}
             >
               <CgDarkMode />
             </a>
           </li>
           <li className={styles.item}>
             <Link href="about">
-              <a aria-label="About">
+              <a aria-label="About" tabIndex={5}>
                 <AiOutlineInfoCircle />
               </a>
             </Link>

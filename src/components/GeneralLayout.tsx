@@ -5,18 +5,27 @@ import { ReactNode } from 'react';
 
 interface GeneralLayoutProps {
   pageTitle?: string;
+  hideMenuBar?: boolean;
   children?: ReactNode;
 }
 
-export function GeneralLayout({ pageTitle, children }: GeneralLayoutProps) {
+export function GeneralLayout({
+  pageTitle,
+  hideMenuBar,
+  children,
+}: GeneralLayoutProps) {
+  const hideMenu = hideMenuBar ?? false;
+
   return (
     <div className={styles.outterContainer}>
       <Head>
-        <title>Leaderboard | facebookson</title>
+        <title>{pageTitle} | facebookson</title>
       </Head>
-      <header>
-        <MenuBar />
-      </header>
+      {!hideMenu && (
+        <header>
+          <MenuBar />
+        </header>
+      )}
       <main className={styles.contentContainer}>
         <section className={styles.content}>
           <div className={styles.pageTitle}>

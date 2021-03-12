@@ -1,17 +1,4 @@
 .container {
-  /* list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3rem;
-  align-items: center;
-  min-height: 100vh;
-  min-width: 6rem;
-  background: var(--blue-dark);
-  list-style-type: none;
-  padding: 50%;
-
-  border: 10px solid green; */
   list-style-type: none;
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 6rem; /* Set the width of the sidebar */

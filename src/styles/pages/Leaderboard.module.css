@@ -1,7 +1,6 @@
 .containerExterno {
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
 
   margin-left: 6rem;
   min-width: calc(100% - 12rem);
@@ -14,21 +13,29 @@
   font-size: 87.5%;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   min-width: 100%;
-  gap: 5rem;
-  border: 1px solid blue;
+  border-radius: 10px;
 }
 
 .userInfoTitle,
 .challengeInfoTitle {
   display: flex;
   align-items: center;
-  gap: 4rem;
-  border: 1px solid orange;
-  padding: 5px;
+  min-width: 25rem;
+}
+
+.userInfoTitle {
+  justify-content: flex-start;
+  gap: 8rem;
+  margin-left: 0.5rem;
+}
+
+.challengeInfoTitle {
+  justify-content: space-evenly;
+  gap: 5.5rem;
 }
 
 .positionTitle {
@@ -37,7 +44,6 @@
   flex-direction: row;
   justify-content: center;
 
-  border: 1px solid green;
   min-width: 4rem;
 }
 
@@ -46,9 +52,7 @@
 .experienceTitle {
   display: flex;
   justify-content: center;
-  border: 1px solid green;
-  min-width: 10rem;
-  padding: 0 10px 0 10px;
+  padding: 0 2px 0 2px;
 }
 
 .contentContainer {

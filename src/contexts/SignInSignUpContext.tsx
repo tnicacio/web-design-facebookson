@@ -1,9 +1,10 @@
 import { createContext, ReactNode, useState } from 'react';
 import Cookies from 'js-cookie';
 import Login from '../pages/login';
-import Challenges from '../pages/challenges';
 
 import { useRouter } from 'next/router';
+import About from '../pages/about';
+import { DarkModeProvider } from './DarkModeContext';
 
 interface SignInSignUpContextData {
   openRegisterModal: () => void;
@@ -21,6 +22,7 @@ interface SignInSignUpProviderProps {
   level?: number;
   currentExperience?: number;
   challengesCompleted?: number;
+  isAboutPage?: boolean;
 }
 
 export const SignInSignUpContext = createContext({} as SignInSignUpContextData);
@@ -73,15 +75,9 @@ export function SignInSignUpProvider({
         setIsLoggedIn,
       }}
     >
-      {isLoggedIn ? (
-        <Challenges
-          level={rest.level}
-          currentExperience={rest.currentExperience}
-          challengesCompleted={rest.challengesCompleted}
-        />
-      ) : (
-        <Login />
-      )}
+      <DarkModeProvider>
+        {isLoggedIn || rest.isAboutPage ? <>{children}</> : <Login />}
+      </DarkModeProvider>
     </SignInSignUpContext.Provider>
   );
 }

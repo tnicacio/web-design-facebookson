@@ -1,6 +1,7 @@
 [
   {
     "name": "Admin",
+    "avatar": "https://github.com/tnicacio/anonymous-animals/raw/master/icons/Kangaroo.png_yellow",
     "email": "admin@email.com",
     "password": "admin",
     "level": 2,
@@ -9,6 +10,7 @@
   },
   {
     "name": "João da Silva",
+    "avatar": "https://github.com/tnicacio/anonymous-animals/raw/master/icons/Raccoon.png_green",
     "email": "joao@email.com",
     "password": "joao123",
     "level": 2,
@@ -17,14 +19,16 @@
   },
   {
     "name": "Mariazinha",
+    "avatar": "https://github.com/tnicacio/anonymous-animals/raw/master/icons/Rabbit.png_red",
     "email": "maria@email.com",
     "password": "maria123",
-    "level": 2,
+    "level": 3,
     "currentExperience": 130,
     "challengesCompleted": 3
   },
   {
     "name": "Duda Lina",
+    "avatar": "https://github.com/tnicacio/anonymous-animals/raw/master/icons/Narwhal.png_teal",
     "email": "duda@email.com",
     "password": "duda123",
     "level": 3,
@@ -33,6 +37,7 @@
   },
   {
     "name": "Tiago",
+    "avatar": "https://github.com/tnicacio/anonymous-animals/raw/master/icons/Orangutan.png_blue",
     "email": "tiago@email.com",
     "password": "123456",
     "level": 3,

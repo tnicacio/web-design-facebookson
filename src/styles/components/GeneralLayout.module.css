@@ -22,7 +22,6 @@
   align-items: flex-start;
   min-height: 100vh;
   margin: auto;
-  border: 1px solid green;
   width: 992px;
   text-align: justify;
 }
@@ -33,7 +32,6 @@
   flex-direction: column;
   margin: 0 0 0 0;
   align-self: flex-start;
-  border: 1px solid blue;
 }
 
 .pageTitle h1 {

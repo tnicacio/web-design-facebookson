@@ -4,6 +4,9 @@ import { FocusScope } from '@react-aria/focus';
 import { useOverlay } from '@react-aria/overlays';
 import { useDialog } from '@react-aria/dialog';
 import { SignInSignUpContext } from '../../contexts/SignInSignUpContext';
+import Link from 'next/link';
+
+import { getRandomAvatar } from '../../utils/UserIcons';
 
 interface ICadastro {
   name: string;
@@ -31,6 +34,9 @@ export function RegisterModal(props: any) {
 
     //Validação do login
     const validData = true;
+
+    console.log(getRandomAvatar());
+
     if (validData) {
       //Salva as infos na session
       signIn();
@@ -43,6 +49,7 @@ export function RegisterModal(props: any) {
   let { dialogProps } = useDialog(props, ref);
 
   // console.log('***formValues', formValues);
+
   return (
     <FocusScope contain autoFocus>
       <div className={styles.overlay}>
@@ -87,7 +94,12 @@ export function RegisterModal(props: any) {
             <div className={styles.submitContainer}>
               <p>
                 Ao clicar em Cadastrar, você concorda com nossos{' '}
-                <a href="#">Termos e Política de Cookies</a>.
+                <Link href="about">
+                  <a target="_blank" rel="noopener noreferrer">
+                    Termos e Política de Cookies
+                  </a>
+                </Link>
+                .
               </p>
               <button className={styles.submitRegister} type="submit">
                 Cadastrar

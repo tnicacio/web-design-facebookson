@@ -2,24 +2,46 @@ import styles from '../../styles/pages/Leaderboard.module.css';
 import axios from 'axios';
 import { GeneralLayout } from '../../components/GeneralLayout';
 import { LeaderboardRow } from '../../components/leaderboard/LeaderboardRow';
+import { GetServerSideProps } from 'next';
+import { SignInSignUpProvider } from '../../contexts/SignInSignUpContext';
 
-interface User {
+interface ILeaderboardProps {
+  user?: IUser;
+  isLoggedIn: boolean;
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
+  userList: IUser[];
+}
+
+interface IUser {
   name: string;
-  email: string;
-  password: string;
+  avatar: string;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
 }
 
-interface LeaderboardProps {
-  userList: User[];
-}
-
-export default function Leaderboard({ userList }: LeaderboardProps) {
-  console.log(userList);
+export default function Leaderboard({
+  isLoggedIn,
+  level,
+  currentExperience,
+  challengesCompleted,
+  userList,
+}: ILeaderboardProps) {
+  // console.log(userList);
   return (
-    <GeneralLayout pageTitle="Leaderboard">{showUsers(userList)}</GeneralLayout>
+    <SignInSignUpProvider
+      isLoggedIn={isLoggedIn}
+      level={level}
+      currentExperience={currentExperience}
+      challengesCompleted={challengesCompleted}
+      // isAboutPage={false}
+    >
+      <GeneralLayout pageTitle="Leaderboard">
+        {showUsers(userList)}
+      </GeneralLayout>
+    </SignInSignUpProvider>
   );
 }
 
@@ -38,8 +60,14 @@ const showUsers = (userList) => {
       </header>
       <section className={styles.contentContainer}>
         {userList?.length > 0
-          ? userList.map((user, index) => {
-              return <LeaderboardRow position={index + 1} user={user} />;
+          ? userList.map((user: IUser, index) => {
+              return (
+                <LeaderboardRow
+                  key={index + 1}
+                  position={index + 1}
+                  user={user}
+                />
+              );
             })
           : 'Nada a mostrar'}
       </section>
@@ -47,7 +75,15 @@ const showUsers = (userList) => {
   );
 };
 
-export async function getServerSideProps(ctx) {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const {
+    level,
+    currentExperience,
+    challengesCompleted,
+    isLoggedIn,
+  } = ctx.req.cookies;
+  console.log(ctx.req.cookies);
+
   const getUsers = async () => {
     try {
       const usersFetched = (await axios.get('http://localhost:3000/api/users'))
@@ -64,10 +100,13 @@ export async function getServerSideProps(ctx) {
 
   const users = await getUsers();
   const userList = [...users];
-
   return {
     props: {
+      level: Number(level) ?? 1,
+      currentExperience: Number(currentExperience) ?? 0,
+      challengesCompleted: Number(challengesCompleted) ?? 0,
+      isLoggedIn: Boolean(isLoggedIn) ?? false,
       userList,
     },
   };
-}
+};

@@ -778,6 +778,11 @@
     ts-node "8.9.1"
     typescript "3.9.3"
 
+animal-avatars.js@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/animal-avatars.js/-/animal-avatars.js-0.0.2.tgz#178a2f1ff18c48acba4ba2f956cbc2f209367808"
+  integrity sha512-MyMjrK0pT30BGthYZbH3zE+ljEBYRbwIi9Zp2mvxkqn7RXuoohR/5nPXDVNcqzSyA9xHGYarh8CZ3LkCd4elxg==
+
 anser@1.4.9:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/anser/-/anser-1.4.9.tgz#1f85423a5dcf8da4631a341665ff675b96845760"

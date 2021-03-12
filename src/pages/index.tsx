@@ -1,5 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { SignInSignUpProvider } from '../contexts/SignInSignUpContext';
+import Challenges from './challenges';
+import Login from './login';
 
 interface User {
   name: string;
@@ -9,21 +11,33 @@ interface User {
 }
 
 interface HomeProps {
-  user: User;
-  isLoggedIn: boolean;
+  user?: User;
+  isLoggedIn?: boolean;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
 }
 
-export default function Home(props: HomeProps) {
+export default function Home({
+  isLoggedIn,
+  level,
+  currentExperience,
+  challengesCompleted,
+}: HomeProps) {
   return (
     <SignInSignUpProvider
-      isLoggedIn={props.isLoggedIn ?? false}
-      level={props.level ?? 1}
-      currentExperience={props.currentExperience ?? 0}
-      challengesCompleted={props.challengesCompleted ?? 0}
-    />
+      isLoggedIn={isLoggedIn}
+      level={level}
+      currentExperience={currentExperience}
+      challengesCompleted={challengesCompleted}
+    >
+      <Challenges
+        isLoggedIn={isLoggedIn}
+        level={level}
+        currentExperience={currentExperience}
+        challengesCompleted={challengesCompleted}
+      />
+    </SignInSignUpProvider>
   );
 }
 
@@ -38,10 +52,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   console.log(ctx.req.cookies);
   return {
     props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted),
-      isLoggedIn: Boolean(isLoggedIn),
+      level: Number(level) ?? 1,
+      currentExperience: Number(currentExperience) ?? 0,
+      challengesCompleted: Number(challengesCompleted) ?? 0,
+      isLoggedIn: Boolean(isLoggedIn) ?? false,
     },
   };
 };
