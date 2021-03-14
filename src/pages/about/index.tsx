@@ -24,13 +24,7 @@ export default function About({
   };
 
   return (
-    <SignInSignUpProvider
-      isLoggedIn={isLoggedIn}
-      level={level}
-      currentExperience={currentExperience}
-      challengesCompleted={challengesCompleted}
-      isAboutPage={true}
-    >
+    <SignInSignUpProvider isLoggedIn={isLoggedIn} isAboutPage={true}>
       <GeneralLayout pageTitle="About Me" hideMenuBar={shouldHideMenuBar()}>
         <Card title="About">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique

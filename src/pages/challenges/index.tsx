@@ -15,7 +15,6 @@ import { GetServerSideProps } from 'next';
 
 import { useContext, useEffect } from 'react';
 import { UserLoggedContext } from '../../contexts/UserLoggedContext';
-import axios from 'axios';
 
 import Cookies from 'js-cookie';
 
@@ -95,9 +94,10 @@ export default function Challenges({
             <CountdownProvider>
               <section>
                 <div>
-                  {userLogged.level}
-                  {level}
-                  <Profile user={userProfile} />
+                  <Profile
+                    user={userProfile}
+                    levelProp={Number(Cookies.get('level')) ?? level}
+                  />
                   <CompletedChallenges />
                   <Countdown />
                 </div>
