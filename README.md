@@ -1,7 +1,7 @@
 
 # Facebookson
 O Facebookson ajuda você a melhorar a sua saúde ao lembrá-lo de fazer pequenas pausas para relaxar durante a sua jornada de trabalho.
-Inicie ciclos de trabalho de 25min e, ao fim de cada ciclo, você irá receber um pequeno desafio que irá lhe trazer relaxamento, cuidar de sua saúde e lhe dará pontos para você competir com os seus colegas facebooksonianos. </br>
+Inicie ciclos de trabalho de 25min e, ao fim de cada ciclo, você irá receber um pequeno desafio que irá lhe trazer relaxamento, cuidar de sua saúde e lhe dará pontos para você competir com os seus colegas facebooksonianos. <br/> <br/>
 ![20210314_011336](https://user-images.githubusercontent.com/50798315/111057008-cca5a000-8462-11eb-9bfe-2c96b40cc703.gif)
 
 ## Como utilizar?
