@@ -1,8 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Como utilizar?
 
-## Getting Started
-
-First, run the development server:
+Inicialmente clone este repositório e, na pasta raiz do projeto, abra o terminal e digite o seguinte comando:
 
 ```bash
 npm run dev
@@ -10,25 +8,57 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Depois disso, abra [http://localhost:3000](http://localhost:3000) com o seu browser para ver o resultado.
+Alternativamente, podes visualizar a versão atual do app em [https://facebookson-tnicacio.vercel.app/](https://facebookson-tnicacio.vercel.app/). 
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Rotas da API
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### [GET] `/api/users` <br/>
+Retorna todos os usuários.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### [POST] `/api/users` <br/>
+Insere o usuário no banco. Deve ser passado o usuário em formato json no corpo da requisição. Exemplo:
+```
+{
+  "name": "Michael Jordan",
+  "email": "mj12@spacejam.com",
+  "password": "SpaceJam123"
+}
+```
+### [GET] `/api/users/{id}` <br/>
+Retorna o usuário que possui o respectivo id.
 
-## Learn More
+### [PUT] `/api/users/{id}` <br/>
+Atualiza o usuário identificado pelo id. Os campos a serem atualizados devem ser passados em formato json no corpo da requisição. Exemplo:
+```
+{
+  "level": 7,
+  "currentExperience": 1352,
+  "challengesCompleted": 18
+}
+```
+### [POST] `/api/signIn` <br/>
+Deve ser passado email e password no formato json `{ "email": "email@mail.com", "password": "MoonWaves123" }` no corpo da requisição.
+Caso já exista um usuário com o email informado, não será criado um novo registro no banco de dados.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tecnologias e Bibliotecas Utilizadas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [React.js](https://pt-br.reactjs.org/)
+- [Next.js](https://nextjs.org/docs)
+- [Typescript](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [Node.js](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/)
+- [Vercel](https://vercel.com/)
+- [axios](https://github.com/axios/axios)
+- [anonymous Animals](https://github.com/wayou/anonymous-animals)
+- [js-cookie](https://github.com/js-cookie/js-cookie)
+- [react-aria](https://react-spectrum.adobe.com/react-aria/)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Optou-se pelo Next pois ele possibilita a indexação mais fácil do conteúdo do site (criado em react), por motores de busca. E também para poder começar a apreder a utilizá-lo.<br/>
+Também comecei a aprender Typescript há poucas semanas e quis utilizá-lo devido a sua grande utilidade em definir e identificar tipos e atributos obrigatórios ou opcionais em funções ou objetos "tipados".<br/>
+Utilizou-se o banco de dados não-relacional MongoDB pois estava-se interessado apenas nos dados do usuário, sem interações com outras entidades.<br/>
+Os avatares dos usuários foram criados aleatoriamente no momento de seus cadastros, utilizando-se as imagens encontradas no repositório [github.com/wayou/anonymous-animals](https://github.com/wayou/anonymous-animals). <br/>
+Para trabalhar com a definição dos cookies e persistência dos dados do usuário logado mesmo quando a página for fechada ou recarregada, utilizou-se a biblioteca js-cookie.
+Por fim, utilizou-se a fantástica biblioteca react-aria para trabalhar com a acessibilidade dos modais, trabalhando-se a fixação do foco e definição de aria-hidden. 
+O deploy do projeto foi feito através da plataforma Vercel.
