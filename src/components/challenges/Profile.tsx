@@ -27,6 +27,8 @@ interface IProfile {
 export function Profile({ user, customStyle }: IProfile) {
   const { level } = useContext(ChallengesContext);
 
+  console.log('*****user Profile *****', user);
+
   const objUser = {
     name: null,
     level: null,
@@ -40,7 +42,7 @@ export function Profile({ user, customStyle }: IProfile) {
     objUser.level = user.level;
     objUser.avatar = user.avatar;
 
-    const [avatarSrc, avatarStyle] = user.avatar.split('_');
+    const [avatarSrc, avatarStyle] = user?.avatar?.split('_') || ['', ''];
     objUser.imgSrc = avatarSrc;
     objUser.avatarColor = avatarStyle;
   }

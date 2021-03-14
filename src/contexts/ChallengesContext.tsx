@@ -1,7 +1,15 @@
-import { createContext, useState, ReactNode, useEffect } from 'react';
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+  useContext,
+} from 'react';
 import Cookies from 'js-cookie';
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/challenges/LevelUpModal';
+import axios from 'axios';
+import { UserLoggedContext } from './UserLoggedContext';
 
 interface Challenge {
   type: 'body' | 'eye';
@@ -29,6 +37,17 @@ interface ChallengesProviderProps {
   challengesCompleted: number;
 }
 
+interface IUser {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  avatar: string;
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
+}
+
 export const ChallengesContext = createContext({} as ChallengesContextData);
 
 export function ChallengesProvider({
@@ -46,16 +65,65 @@ export function ChallengesProvider({
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModelOpen, setIsLevelUpModelOpen] = useState(false);
 
+  const { userLogged, setUserLoggedIn } = useContext(UserLoggedContext);
+
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
   useEffect(() => {
     Notification.requestPermission();
   }, []);
 
+  let dbUserWithCookies = {
+    _id: null,
+    name: null,
+    email: null,
+    password: null,
+    level: null,
+    currentExperience: null,
+    challengesCompleted: null,
+  } as IUser;
+
+  const getUserFromDb = async () => {
+    if (!userLogged._id && Cookies.get('facebooksonId')) {
+      const responseFromDb: {
+        _id: string;
+        name: string;
+        email: string;
+        password: string;
+        avatar: string;
+        level: number;
+        currentExperience: number;
+        challengesCompleted: number;
+      } = (await axios.get(`api/users/${Cookies.get('facebooksonId')}`)).data
+        .returnFindById;
+
+      const userFromDb = { ...responseFromDb };
+      console.log('***userFromDb***', userFromDb);
+
+      const clevel = level;
+      if (clevel) {
+        userFromDb.level = Number(clevel);
+      }
+      const cCurrentExperience = currentExperience;
+      if (cCurrentExperience) {
+        userFromDb.currentExperience = Number(currentExperience);
+      }
+      const cChallengesCompleted = challengesCompleted;
+      if (cChallengesCompleted) {
+        userFromDb.challengesCompleted = Number(challengesCompleted);
+      }
+      dbUserWithCookies = { ...userFromDb };
+
+      setUserLoggedIn(dbUserWithCookies);
+      console.log('***dbUserWithCookies', dbUserWithCookies);
+    }
+  };
+
   useEffect(() => {
     Cookies.set('level', String(level));
     Cookies.set('currentExperience', String(currentExperience));
     Cookies.set('challengesCompleted', String(challengesCompleted));
+    getUserFromDb();
   }, [level, currentExperience, challengesCompleted]);
 
   function levelUp() {

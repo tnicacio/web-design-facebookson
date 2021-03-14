@@ -7,11 +7,23 @@ import { SignInSignUpContext } from '../../contexts/SignInSignUpContext';
 import Link from 'next/link';
 
 import { getRandomAvatar } from '../../utils/UserIcons';
+import axios from 'axios';
+import { UserLoggedContext } from '../../contexts/UserLoggedContext';
 
 interface ICadastro {
   name: string;
   email: string;
   password: string;
+}
+
+interface IUser {
+  name: string;
+  email: string;
+  password: string;
+  avatar: string;
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
 }
 
 export function RegisterModal(props: any) {
@@ -27,20 +39,28 @@ export function RegisterModal(props: any) {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    //Validação do login
-    const validData = true;
+    const userObject: IUser = {
+      name: String(data?.name),
+      email: String(data?.email),
+      password: String(data?.password),
+      avatar: getRandomAvatar().dbUri,
+      level: 1,
+      currentExperience: 0,
+      challengesCompleted: 0,
+    };
 
-    console.log(getRandomAvatar());
+    const response = await axios.post('/api/users', userObject);
 
-    if (validData) {
-      //Salva as infos na session
+    const userSavedOnDb = response.data;
+
+    if (userSavedOnDb._id) {
       closeRegisterModal();
-      signIn();
+      signIn(userSavedOnDb);
     }
     console.log('handleSubmit', data);
   };

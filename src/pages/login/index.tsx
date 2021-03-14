@@ -5,7 +5,6 @@ import { SignInSignUpContext } from '../../contexts/SignInSignUpContext';
 import { RegisterModal } from '../../components/login/RegisterModal';
 
 import axios from 'axios';
-import { useRouter } from 'next/router';
 
 interface ILogin {
   email: string;
@@ -26,34 +25,28 @@ function Login() {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  async function validaLogin(formData) {
-    try {
-      const { email, password } = formData;
-      const users = (await axios.get('http://localhost:3000/api/users'))?.data;
-      for (let user of users) {
-        if (user.email === email && user.password === password) {
-          //set user on session
-          return true;
-        }
-      }
-      return false;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
-    const loginValid = await validaLogin(data);
-    console.log(loginValid);
-    if (loginValid) {
-      signIn();
-    } else {
-      alert('Email ou senha incorretos!');
+
+    const userObject: ILogin = {
+      email: String(data?.email),
+      password: String(data?.password),
+    };
+
+    try {
+      const response = await axios.post('/api/signIn', userObject);
+      const responseDatafromDb = response.data;
+
+      if (responseDatafromDb._id) {
+        signIn(responseDatafromDb);
+      } else {
+        alert(responseDatafromDb.message);
+      }
+    } catch (err) {
+      console.log(err);
     }
-    console.log('handleSubmit', data);
   };
 
   const handleForgottenPass = (event: React.MouseEvent) => {
@@ -139,13 +132,3 @@ function Login() {
 }
 
 export default Login;
-
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   if (ctx.res) {
-//     ctx.res.writeHead(302, { Location: '/' });
-//     ctx.res.end();
-//   }
-//   return {
-//     props: {},
-//   };
-// };

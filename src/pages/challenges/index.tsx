@@ -13,18 +13,36 @@ import { ChallengesProvider } from '../../contexts/ChallengesContext';
 import { SignInSignUpProvider } from '../../contexts/SignInSignUpContext';
 import { GetServerSideProps } from 'next';
 
-import UserList from '../../../mockUsers.json';
+import { useContext, useEffect } from 'react';
+import { UserLoggedContext } from '../../contexts/UserLoggedContext';
+import axios from 'axios';
 
-interface User {
+import Cookies from 'js-cookie';
+
+interface HomeProps {
+  isLoggedIn: boolean;
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
+  facebooksonName: string;
+  facebooksonAvatar: string;
+  facebooksonId: string;
+}
+
+interface IUser {
+  _id: string;
   name: string;
   email: string;
   password: string;
-  isLoggedIn: boolean;
+  avatar: string;
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
 }
 
-interface HomeProps {
-  user?: User;
-  isLoggedIn: boolean;
+interface IProfile {
+  name: string;
+  avatar: string;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
@@ -35,34 +53,34 @@ export default function Challenges({
   level,
   currentExperience,
   challengesCompleted,
+  facebooksonName,
+  facebooksonAvatar,
+  facebooksonId,
 }: HomeProps) {
-  interface IUser {
-    name: string;
-    avatar: string;
-    level: number;
-    currentExperience: number;
-    challengesCompleted: number;
-  }
+  const { userLogged, setUserLoggedIn, updateUserWithCookies } = useContext(
+    UserLoggedContext
+  );
 
-  const userLogged: IUser = {
-    name: UserList[1].name,
-    avatar: UserList[1].avatar,
-    level: UserList[1].level,
-    currentExperience: UserList[1].currentExperience,
-    challengesCompleted: UserList[1].challengesCompleted,
+  const userProfile: IProfile = {
+    name: userLogged.name || facebooksonName,
+    avatar: userLogged.avatar || facebooksonAvatar,
+    level: Math.max(userLogged.level, level),
+    currentExperience: Math.max(
+      userLogged.currentExperience,
+      currentExperience
+    ),
+    challengesCompleted: Math.max(
+      userLogged.challengesCompleted,
+      challengesCompleted
+    ),
   };
 
   return (
-    <SignInSignUpProvider
-      isLoggedIn={isLoggedIn}
-      level={level}
-      currentExperience={currentExperience}
-      challengesCompleted={challengesCompleted}
-    >
+    <SignInSignUpProvider isLoggedIn={isLoggedIn ?? false}>
       <ChallengesProvider
-        level={level}
-        currentExperience={currentExperience}
-        challengesCompleted={challengesCompleted}
+        level={level ?? 1}
+        currentExperience={currentExperience ?? 0}
+        challengesCompleted={challengesCompleted ?? 0}
       >
         <div className={styles.outterContainer}>
           <Head>
@@ -77,7 +95,9 @@ export default function Challenges({
             <CountdownProvider>
               <section>
                 <div>
-                  <Profile user={userLogged} />
+                  {userLogged.level}
+                  {level}
+                  <Profile user={userProfile} />
                   <CompletedChallenges />
                   <Countdown />
                 </div>
@@ -99,15 +119,21 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     currentExperience,
     challengesCompleted,
     isLoggedIn,
+    facebooksonName,
+    facebooksonAvatar,
+    facebooksonId,
   } = ctx.req.cookies;
 
   console.log(ctx.req.cookies);
   return {
     props: {
-      level: Number(level) ?? 1,
-      currentExperience: Number(currentExperience) ?? 0,
-      challengesCompleted: Number(challengesCompleted) ?? 0,
-      isLoggedIn: Boolean(isLoggedIn) ?? false,
+      level,
+      currentExperience,
+      challengesCompleted,
+      isLoggedIn,
+      facebooksonName,
+      facebooksonAvatar,
+      facebooksonId,
     },
   };
 };
