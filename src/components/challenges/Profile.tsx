@@ -22,9 +22,10 @@ interface ICustomStyle {
 interface IProfile {
   user?: IUser;
   customStyle?: ICustomStyle;
+  levelProp?: number;
 }
 
-export function Profile({ user, customStyle }: IProfile) {
+export function Profile({ user, customStyle, levelProp }: IProfile) {
   const { level } = useContext(ChallengesContext);
 
   console.log('*****user Profile *****', user);
@@ -98,7 +99,7 @@ export function Profile({ user, customStyle }: IProfile) {
             alt="level"
             style={{ ...objCustomStyle.profileContainerDivPImg }}
           />
-          Level {objUser.level ?? level}
+          Level {level ?? objUser.level}
         </p>
       </div>
     </div>
