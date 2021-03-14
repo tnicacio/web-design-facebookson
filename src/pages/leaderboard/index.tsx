@@ -31,13 +31,7 @@ export default function Leaderboard({
 }: ILeaderboardProps) {
   // console.log(userList);
   return (
-    <SignInSignUpProvider
-      isLoggedIn={isLoggedIn}
-      level={level}
-      currentExperience={currentExperience}
-      challengesCompleted={challengesCompleted}
-      // isAboutPage={false}
-    >
+    <SignInSignUpProvider isLoggedIn={isLoggedIn}>
       <GeneralLayout pageTitle="Leaderboard">
         {showUsers(userList)}
       </GeneralLayout>
