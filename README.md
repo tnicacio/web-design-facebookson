@@ -1,3 +1,7 @@
+# Facebookson
+O Facebookson ajuda você a melhorar a sua saúde ao lembrá-lo de fazer pequenas pausas para relaxar durante a sua jornada de trabalho.
+Inicie ciclos de trabalho de 25min e, ao fim de cada ciclo, você irá receber um pequeno desafio que irá lhe trazer relaxamento, cuidar de sua saúde e lhe dará pontos para você competir com os seus colegas facebooksonianos.
+
 ## Como utilizar?
 
 Inicialmente clone este repositório e, na pasta raiz do projeto, abra o terminal e digite o seguinte comando:
