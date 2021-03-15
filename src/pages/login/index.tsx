@@ -81,7 +81,7 @@ function Login() {
             <div className={styles.signInSignUpContainer}>
               <form className={styles.formLogin} onSubmit={handleSubmit}>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   name="email"
                   onChange={handleInputChange}
